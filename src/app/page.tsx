@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 // Data for skills section
 const skillCategories = [
   {
@@ -126,11 +128,13 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
-                <div className="w-full h-full flex items-center justify-center text-gray-400">
-                  <svg className="w-32 h-32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
+                <Image
+                  src="/profile.jpg"
+                  alt="Profile"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
 
