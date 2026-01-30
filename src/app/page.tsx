@@ -231,10 +231,10 @@ export default function Home() {
       <section id="projects" className="py-20 px-4 bg-white dark:bg-gray-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Featured Projects</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Projects</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
             <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Here are some of my recent projects that showcase my skills and experience.
+              Here are some projects I&apos;ve built to solve real-world problems.
             </p>
           </div>
 
