@@ -2,11 +2,14 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-gray-900 text-white py-12 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <p className="text-xl font-bold">Portfolio</p>
+            <p className="text-xl font-bold text-gradient-animate">Portfolio</p>
             <p className="text-gray-400 mt-1">Building digital experiences</p>
           </div>
 
@@ -15,7 +18,7 @@ export default function Footer() {
               href="https://github.com/Chayananz"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-gray-400 hover:text-white transition-all duration-300 hover:scale-125 hover:-translate-y-1"
               aria-label="GitHub"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -26,7 +29,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/chayanan-pathumrak-6865b33a9/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-125 hover:-translate-y-1"
               aria-label="LinkedIn"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -35,7 +38,7 @@ export default function Footer() {
             </a>
             <a
               href="mailto:chayananpath.work@gmail.com"
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-gray-400 hover:text-red-400 transition-all duration-300 hover:scale-125 hover:-translate-y-1"
               aria-label="Email"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,7 +49,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-          <p>&copy; {currentYear} All rights reserved.</p>
+          <p className="hover:text-white transition-colors">&copy; {currentYear} Chayanan Pathumarak. All rights reserved.</p>
         </div>
       </div>
     </footer>

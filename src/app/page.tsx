@@ -22,9 +22,9 @@ const projects = [
     title: "E-Commerce Platform",
     description: "A full-featured online shopping platform with cart management, payment integration, and admin dashboard.",
     image: "/projects/project1.jpg",
-    techStack: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+    techStack: ["Next.js", "TypeScript", "JavaScript", "Stripe", "PostgreSQL"],
+    githubUrl: "https://github.com/Chayananz/Project_E-Commerce",
+    liveUrl: "https://e-commerce-store-six-ashen.vercel.app",
   },
   {
     title: "Task Management App",
@@ -82,38 +82,54 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center pt-16 px-4 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="animate-fade-in-up">
-            <p className="text-blue-600 dark:text-blue-400 font-medium mb-4">Hello, I&apos;m</p>
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
-              Your Name
+      <section id="home" className="min-h-screen flex items-center justify-center pt-16 px-4 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-float animation-delay-500"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-6xl mx-auto text-center relative z-10">
+          <div>
+            <p className="text-blue-600 dark:text-blue-400 font-medium mb-4 animate-fade-in-down">Hello, I&apos;m</p>
+            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in-up opacity-0 animation-delay-200">
+              <span className="text-gradient-animate">Chayanan Pathumarak</span>
             </h1>
-            <h2 className="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-8">
+            <h2 className="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-8 animate-fade-in-up opacity-0 animation-delay-400">
               Full Stack Developer
             </h2>
-            <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-12">
+            <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-12 animate-fade-in-up opacity-0 animation-delay-600">
               I build exceptional digital experiences that are fast, accessible, and visually appealing.
               Passionate about creating solutions that make a difference.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up opacity-0 animation-delay-800">
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+                className="btn-animated inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 shadow-lg group"
               >
                 View My Work
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-colors"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 hover:scale-105"
               >
                 Contact Me
               </a>
             </div>
           </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-subtle">
+          <a href="#about" className="text-gray-400 hover:text-blue-600 transition-colors">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </a>
         </div>
       </section>
 
@@ -122,17 +138,18 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">About Me</h2>
-            <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500"></div>
+              <div className="relative aspect-square rounded-2xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden img-zoom hover-glow">
                 <Image
                   src="/profile.jpg"
                   alt="Profile"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500"
                   priority
                 />
               </div>
@@ -157,9 +174,9 @@ export default function Home() {
                 <a
                   href="/resume.pdf"
                   download
-                  className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                  className="btn-animated inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 group"
                 >
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 mr-2 transition-transform group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                   Download Resume
@@ -171,28 +188,34 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-        <div className="max-w-6xl mx-auto">
+      <section id="skills" className="py-20 px-4 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl"></div>
+
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Skills & Expertise</h2>
-            <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
             <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Here are the technologies and tools I work with to bring ideas to life.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {skillCategories.map((category) => (
+          <div className="grid md:grid-cols-3 gap-8 stagger-children">
+            {skillCategories.map((category, index) => (
               <div
                 key={category.title}
-                className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+                className="card-hover bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg border border-gray-100 dark:border-gray-700"
+                style={{ animationDelay: `${index * 0.15}s` }}
               >
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{category.title}</h3>
                 <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
+                  {category.skills.map((skill, skillIndex) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium"
+                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-900/50 hover:scale-110 transition-all duration-300 cursor-default"
+                      style={{ animationDelay: `${(index * 0.15) + (skillIndex * 0.05)}s` }}
                     >
                       {skill}
                     </span>
@@ -209,30 +232,33 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Featured Projects</h2>
-            <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
             <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Here are some of my recent projects that showcase my skills and experience.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
+            {projects.map((project, index) => (
               <div
                 key={project.title}
-                className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
+                className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg card-hover border border-gray-100 dark:border-gray-700"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 relative overflow-hidden">
-                  <div className="w-full h-full flex items-center justify-center text-gray-400">
-                    <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div className="absolute inset-0 bg-blue-600/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-600/90 via-blue-600/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center gap-4">
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-white rounded-full hover:bg-gray-100 transition-colors"
+                      className="p-3 bg-white rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-110 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
+                      style={{ transitionDelay: '0.1s' }}
                       aria-label="View Source Code"
                     >
                       <svg className="w-6 h-6 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
@@ -243,7 +269,8 @@ export default function Home() {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-white rounded-full hover:bg-gray-100 transition-colors"
+                      className="p-3 bg-white rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-110 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100"
+                      style={{ transitionDelay: '0.2s' }}
                       aria-label="View Live Demo"
                     >
                       <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -253,13 +280,13 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{project.title}</h3>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{project.title}</h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.techStack.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded text-xs font-medium"
+                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded text-xs font-medium hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-default"
                       >
                         {tech}
                       </span>
@@ -273,29 +300,33 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-        <div className="max-w-6xl mx-auto">
+      <section id="contact" className="py-20 px-4 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-400/5 to-purple-400/5 rounded-full blur-3xl"></div>
+
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Get In Touch</h2>
-            <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
             <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               I&apos;m always open to new opportunities and interesting projects. Feel free to reach out!
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {contactInfo.map((contact) => (
+            {contactInfo.map((contact, index) => (
               <a
                 key={contact.label}
                 href={contact.href}
                 target={contact.href.startsWith("mailto:") ? undefined : "_blank"}
                 rel={contact.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                className="flex flex-col items-center p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                className="group flex flex-col items-center p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg card-hover border border-gray-100 dark:border-gray-700"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-14 h-14 flex items-center justify-center bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full mb-4">
+                <div className="w-14 h-14 flex items-center justify-center bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full mb-4 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white dark:group-hover:bg-blue-600 transition-all duration-300">
                   {contact.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{contact.label}</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{contact.label}</h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm text-center">{contact.value}</p>
               </a>
             ))}
@@ -304,10 +335,10 @@ export default function Home() {
           <div className="mt-16 text-center">
             <a
               href="mailto:chayananpath.work@gmail.com"
-              className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+              className="btn-animated inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg shadow-lg group hover:shadow-2xl"
             >
               Say Hello
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </a>
