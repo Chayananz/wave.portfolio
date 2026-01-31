@@ -40,7 +40,7 @@ const projects = [
     image: "/projects/project3.jpg",
     techStack: ["JavaScript", "CSS", "HTML"],
     githubUrl: "https://github.com/Chayananz/restaurant-app",
-    liveUrl: "#",
+    liveUrl: "https://restaurant-app-two-lovat.vercel.app",
   },
 ];
 
