@@ -35,12 +35,12 @@ const projects = [
     liveUrl: "https://example.com",
   },
   {
-    title: "Portfolio Website",
-    description: "A modern, responsive portfolio website built with Next.js and Tailwind CSS showcasing projects and skills.",
+    title: "Restaurant App",
+    description: "A restaurant application for browsing menus, placing orders, and managing reservations.",
     image: "/projects/project3.jpg",
-    techStack: ["Next.js", "Tailwind CSS", "TypeScript"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+    techStack: ["JavaScript", "CSS", "HTML"],
+    githubUrl: "https://github.com/Chayananz/restaurant-app",
+    liveUrl: "#",
   },
 ];
 
