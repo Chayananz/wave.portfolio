@@ -127,10 +127,10 @@ body {
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.6);
   }
 }
 
@@ -245,7 +245,7 @@ body {
 }
 
 .hover-glow:hover {
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
 }
 
 /* Button animations */
@@ -272,7 +272,7 @@ body {
 
 .btn-animated:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
 }
 
 /* Card hover effects */
@@ -287,7 +287,7 @@ body {
 
 /* Text gradient animation */
 .text-gradient-animate {
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+  background: linear-gradient(90deg, #38bdf8, #22d3ee, #67e8f9, #38bdf8);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -316,7 +316,7 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  background: linear-gradient(90deg, #38bdf8, #22d3ee);
   transition: width 0.3s ease;
 }
 

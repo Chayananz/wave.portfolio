@@ -18,7 +18,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 animate-fade-in-down">
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+          <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-colors">
             <span className="text-gradient-animate">Portfolio</span>
           </Link>
 
@@ -28,7 +28,7 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="relative text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium underline-animation"
+                className="relative text-gray-600 dark:text-gray-300 hover:text-sky-500 dark:hover:text-sky-400 transition-colors font-medium underline-animation"
               >
                 {link.label}
               </a>
@@ -63,7 +63,7 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="block py-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:translate-x-2 transition-all duration-300 font-medium"
+                className="block py-3 text-gray-600 dark:text-gray-300 hover:text-sky-500 dark:hover:text-sky-400 hover:translate-x-2 transition-all duration-300 font-medium"
                 style={{ transitionDelay: `${index * 50}ms` }}
                 onClick={() => setIsMenuOpen(false)}
               >

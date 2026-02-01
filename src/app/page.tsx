@@ -82,17 +82,17 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center pt-16 px-4 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden">
+      <section id="home" className="min-h-screen flex items-center justify-center pt-16 px-4 bg-gradient-to-br from-sky-50 via-white to-cyan-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-float animation-delay-500"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-sky-300/20 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl animate-float animation-delay-500"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-sky-300/10 to-cyan-300/10 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <div>
-            <p className="text-blue-600 dark:text-blue-400 font-medium mb-4 animate-fade-in-down">Hello, I&apos;m</p>
+            <p className="text-sky-500 dark:text-sky-400 font-medium mb-4 animate-fade-in-down">Hello, I&apos;m</p>
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in-up opacity-0 animation-delay-200">
               <span className="text-gradient-animate">Chayanan Pathumarak</span>
             </h1>
@@ -103,13 +103,13 @@ export default function Home() {
               I build exceptional digital experiences that are fast, accessible, and visually appealing.
               Passionate about creating solutions that make a difference.
             </p>
-            <p className="text-xl text-blue-600 dark:text-blue-400 font-medium mb-12 animate-fade-in-up opacity-0 animation-delay-700">
+            <p className="text-xl text-sky-500 dark:text-sky-400 font-medium mb-12 animate-fade-in-up opacity-0 animation-delay-700">
               Then fluid meets solid 🌊 Exploring path animation through a logo concept animation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up opacity-0 animation-delay-800">
               <a
                 href="#projects"
-                className="btn-animated inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 shadow-lg group"
+                className="btn-animated inline-flex items-center justify-center px-8 py-4 bg-sky-400 text-white font-medium rounded-lg hover:bg-sky-500 shadow-lg group"
               >
                 View My Work
                 <svg className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,7 +118,7 @@ export default function Home() {
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 hover:scale-105"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:border-sky-400 hover:text-sky-500 dark:hover:border-sky-400 dark:hover:text-sky-400 transition-all duration-300 hover:scale-105"
               >
                 Contact Me
               </a>
@@ -128,7 +128,7 @@ export default function Home() {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-subtle">
-          <a href="#about" className="text-gray-400 hover:text-blue-600 transition-colors">
+          <a href="#about" className="text-gray-400 hover:text-sky-500 transition-colors">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
@@ -141,13 +141,13 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">About Me</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-sky-400 to-cyan-400 mx-auto rounded-full"></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500"></div>
-              <div className="relative aspect-square rounded-2xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden img-zoom hover-glow">
+              <div className="absolute -inset-4 bg-gradient-to-r from-sky-400 to-cyan-400 rounded-2xl opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500"></div>
+              <div className="relative aspect-square rounded-2xl bg-gradient-to-br from-sky-100 to-cyan-100 dark:from-sky-900/30 dark:to-cyan-900/30 overflow-hidden img-zoom hover-glow">
                 <Image
                   src="/profile.jpg"
                   alt="Profile"
@@ -177,7 +177,7 @@ export default function Home() {
                 <a
                   href="/resume.pdf"
                   download
-                  className="btn-animated inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 group"
+                  className="btn-animated inline-flex items-center justify-center px-6 py-3 bg-sky-400 text-white font-medium rounded-lg hover:bg-sky-500 group"
                 >
                   <svg className="w-5 h-5 mr-2 transition-transform group-hover:-translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -193,13 +193,13 @@ export default function Home() {
       {/* Skills Section */}
       <section id="skills" className="py-20 px-4 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
         {/* Background decoration */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-sky-300/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-300/10 rounded-full blur-3xl"></div>
 
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Skills & Expertise</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-sky-400 to-cyan-400 mx-auto rounded-full"></div>
             <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Here are the technologies and tools I work with to bring ideas to life.
             </p>
@@ -217,7 +217,7 @@ export default function Home() {
                   {category.skills.map((skill, skillIndex) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-900/50 hover:scale-110 transition-all duration-300 cursor-default"
+                      className="px-3 py-1 bg-sky-100 dark:bg-sky-900/30 text-sky-500 dark:text-sky-400 rounded-full text-sm font-medium hover:bg-sky-200 dark:hover:bg-sky-900/50 hover:scale-110 transition-all duration-300 cursor-default"
                       style={{ animationDelay: `${(index * 0.15) + (skillIndex * 0.05)}s` }}
                     >
                       {skill}
@@ -235,7 +235,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Projects</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-sky-400 to-cyan-400 mx-auto rounded-full"></div>
             <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Here are some projects I&apos;ve built to solve real-world problems.
             </p>
@@ -248,14 +248,14 @@ export default function Home() {
                 className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg card-hover border border-gray-100 dark:border-gray-700"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 relative overflow-hidden">
+                <div className="aspect-video bg-gradient-to-br from-sky-100 to-cyan-100 dark:from-sky-900/30 dark:to-cyan-900/30 relative overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-600/90 via-blue-600/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center gap-4">
+                  <div className="absolute inset-0 bg-gradient-to-t from-sky-400/90 via-sky-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center gap-4">
                     <a
                       href={project.githubUrl}
                       target="_blank"
@@ -283,13 +283,13 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors">{project.title}</h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.techStack.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded text-xs font-medium hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-default"
+                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded text-xs font-medium hover:bg-sky-100 dark:hover:bg-sky-900/30 hover:text-sky-500 dark:hover:text-sky-400 transition-colors cursor-default"
                       >
                         {tech}
                       </span>
@@ -305,12 +305,12 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
         {/* Background decoration */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-400/5 to-purple-400/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-sky-300/5 to-cyan-300/5 rounded-full blur-3xl"></div>
 
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Get In Touch</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-sky-400 to-cyan-400 mx-auto rounded-full"></div>
             <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               I&apos;m always open to new opportunities and interesting projects. Feel free to reach out!
             </p>
@@ -326,10 +326,10 @@ export default function Home() {
                 className="group flex flex-col items-center p-6 bg-white dark:bg-gray-900 rounded-xl shadow-lg card-hover border border-gray-100 dark:border-gray-700"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-14 h-14 flex items-center justify-center bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full mb-4 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white dark:group-hover:bg-blue-600 transition-all duration-300">
+                <div className="w-14 h-14 flex items-center justify-center bg-sky-100 dark:bg-sky-900/30 text-sky-500 dark:text-sky-400 rounded-full mb-4 group-hover:scale-110 group-hover:bg-sky-400 group-hover:text-white dark:group-hover:bg-sky-400 transition-all duration-300">
                   {contact.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{contact.label}</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors">{contact.label}</h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm text-center">{contact.value}</p>
               </a>
             ))}
@@ -338,7 +338,7 @@ export default function Home() {
           <div className="mt-16 text-center">
             <a
               href="mailto:chayananpath.work@gmail.com"
-              className="btn-animated inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg shadow-lg group hover:shadow-2xl"
+              className="btn-animated inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-sky-400 to-cyan-400 text-white font-medium rounded-lg shadow-lg group hover:shadow-2xl"
             >
               Say Hello
               <svg className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
