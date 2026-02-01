@@ -99,12 +99,9 @@ export default function Home() {
             <h2 className="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-8 animate-fade-in-up opacity-0 animation-delay-400">
               Full Stack Developer
             </h2>
-            <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-6 animate-fade-in-up opacity-0 animation-delay-600">
+            <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-12 animate-fade-in-up opacity-0 animation-delay-600">
               I build exceptional digital experiences that are fast, accessible, and visually appealing.
               Passionate about creating solutions that make a difference.
-            </p>
-            <p className="text-xl text-sky-500 dark:text-sky-400 font-medium mb-12 animate-fade-in-up opacity-0 animation-delay-700">
-              Then fluid meets solid 🌊 Exploring path animation through a logo concept animation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up opacity-0 animation-delay-800">
               <a
