@@ -1,101 +1,101 @@
 # Portfolio Website - Chayanan Pathumarak
 
-Personal portfolio website built with Next.js and Tailwind CSS.
+เว็บไซต์ Portfolio ส่วนตัว สร้างด้วย Next.js และ Tailwind CSS
 
-## Tech Stack
+## เทคโนโลยีที่ใช้
 
-| Technology | Purpose |
-|------------|---------|
+| เทคโนโลยี | หน้าที่ |
+|-----------|---------|
 | **Next.js 16** | React framework |
-| **TypeScript** | Type-safe JavaScript |
-| **Tailwind CSS 4** | Styling |
-| **Vercel Analytics** | Analytics tracking |
+| **TypeScript** | JavaScript แบบ type-safe |
+| **Tailwind CSS 4** | จัดการ styling |
+| **Vercel Analytics** | ติดตามสถิติเว็บ |
 
 ---
 
-## Project Structure
+## โครงสร้างโปรเจค
 
 ```
 src/
 ├── app/
-│   ├── page.tsx        # Main page (all sections)
-│   ├── layout.tsx      # Root layout (Header, Footer, Analytics)
-│   └── globals.css     # Global styles & animations
+│   ├── page.tsx        # หน้าหลัก (ทุก section)
+│   ├── layout.tsx      # Layout หลัก (Header, Footer, Analytics)
+│   └── globals.css     # CSS กลาง และ animations
 ├── components/
-│   ├── Header.tsx      # Navigation header
-│   └── Footer.tsx      # Footer component
+│   ├── Header.tsx      # แถบเมนูด้านบน
+│   └── Footer.tsx      # ส่วนท้ายเว็บ
 public/
-├── profile.jpg         # Profile image
-├── resume.pdf          # Resume/CV file
+├── profile.jpg         # รูปโปรไฟล์
+├── resume.pdf          # ไฟล์ Resume/CV
 └── projects/
-    ├── project1.jpg    # E-Commerce image
-    ├── project2.jpg    # Error (placeholder)
-    └── project3.jpg    # Restaurant App image
+    ├── project1.jpg    # รูป E-Commerce
+    ├── project2.jpg    # รูป Error (placeholder)
+    └── project3.jpg    # รูป Restaurant App
 ```
 
 ---
 
-## File Locations & Line Numbers
+## ตำแหน่งไฟล์และบรรทัด
 
-### src/app/page.tsx
+### src/app/page.tsx (หน้าหลัก)
 
-| Section | Line Numbers | Description |
-|---------|--------------|-------------|
-| **Skills Data** | 4-17 | skillCategories array |
-| **Projects Data** | 20-44 | projects array |
-| **Contact Data** | 47-79 | contactInfo array |
-| **Hero Section** | 85-134 | Home/landing section |
-| **About Section** | 137-191 | About me + **Download Resume (line 177-186)** |
-| **Skills Section** | 194-231 | Skills & Expertise |
-| **Projects Section** | 234-303 | Projects cards |
-| **Contact Section** | 306-350 | Contact info |
+| ส่วน | บรรทัด | รายละเอียด |
+|------|--------|------------|
+| **ข้อมูล Skills** | 4-17 | array skillCategories |
+| **ข้อมูล Projects** | 20-44 | array projects |
+| **ข้อมูล Contact** | 47-79 | array contactInfo |
+| **Hero Section** | 85-134 | หน้าแรก/landing |
+| **About Section** | 137-191 | เกี่ยวกับฉัน + **ปุ่ม Download Resume (บรรทัด 177-186)** |
+| **Skills Section** | 194-231 | ทักษะและความเชี่ยวชาญ |
+| **Projects Section** | 234-303 | การ์ด Projects |
+| **Contact Section** | 306-350 | ข้อมูลติดต่อ |
 
-### src/app/layout.tsx
+### src/app/layout.tsx (Layout หลัก)
 
-| Item | Line Numbers | Description |
-|------|--------------|-------------|
-| **Imports** | 1-6 | Next.js, Analytics, components |
-| **Metadata** | 12-32 | SEO metadata |
+| ส่วน | บรรทัด | รายละเอียด |
+|------|--------|------------|
+| **Imports** | 1-6 | นำเข้า Next.js, Analytics, components |
+| **Metadata** | 12-32 | ข้อมูล SEO |
 | **Body Layout** | 41-46 | Header, main, Footer, Analytics |
 
-### src/app/globals.css
+### src/app/globals.css (CSS กลาง)
 
-| Section | Line Numbers | Description |
-|---------|--------------|-------------|
-| **Theme Variables** | 3-19 | Light/dark mode colors |
-| **Keyframe Animations** | 64-153 | fade-in, float, pulse-glow, etc. |
-| **Animation Classes** | 155-223 | animate-* utility classes |
+| ส่วน | บรรทัด | รายละเอียด |
+|------|--------|------------|
+| **ตัวแปร Theme** | 3-19 | สี light/dark mode |
+| **Keyframe Animations** | 64-153 | fade-in, float, pulse-glow ฯลฯ |
+| **Animation Classes** | 155-223 | class animate-* |
 | **Hover Effects** | 225-249 | hover-lift, hover-scale, hover-glow |
 | **Button Animations** | 251-276 | btn-animated |
 | **Card Effects** | 278-286 | card-hover |
 | **Text Gradient** | 288-305 | text-gradient-animate |
 | **Underline Animation** | 307-325 | underline-animation |
 
-### src/components/Header.tsx
+### src/components/Header.tsx (แถบเมนู)
 
-| Item | Line Numbers | Description |
-|------|--------------|-------------|
-| **Nav Links** | 9-15 | Navigation menu items |
-| **Desktop Nav** | 26-36 | Desktop navigation |
-| **Mobile Menu** | 38-56 | Mobile hamburger button |
-| **Mobile Nav** | 59-74 | Mobile navigation menu |
+| ส่วน | บรรทัด | รายละเอียด |
+|------|--------|------------|
+| **Nav Links** | 9-15 | รายการเมนู |
+| **Desktop Nav** | 26-36 | เมนูสำหรับ Desktop |
+| **Mobile Menu** | 38-56 | ปุ่ม hamburger menu |
+| **Mobile Nav** | 59-74 | เมนูสำหรับมือถือ |
 
-### src/components/Footer.tsx
+### src/components/Footer.tsx (ส่วนท้าย)
 
-| Item | Line Numbers | Description |
-|------|--------------|-------------|
-| **Gradient Line** | 7 | Top border decoration |
-| **Logo** | 12-13 | Portfolio text |
+| ส่วน | บรรทัด | รายละเอียด |
+|------|--------|------------|
+| **Gradient Line** | 7 | เส้นตกแต่งด้านบน |
+| **Logo** | 12-13 | ข้อความ Portfolio |
 | **Social Icons** | 16-48 | GitHub, LinkedIn, Email |
-| **Copyright** | 51-53 | Copyright text |
+| **Copyright** | 51-53 | ข้อความลิขสิทธิ์ |
 
 ---
 
-## Key Components Location
+## ตำแหน่ง Components สำคัญ
 
-### Download Resume Button
-- **File:** `src/app/page.tsx`
-- **Lines:** 177-186
+### ปุ่ม Download Resume
+- **ไฟล์:** `src/app/page.tsx`
+- **บรรทัด:** 177-186
 ```tsx
 <a
   href="/resume.pdf"
@@ -106,49 +106,49 @@ public/
 </a>
 ```
 
-### Projects Array
-- **File:** `src/app/page.tsx`
-- **Lines:** 20-44
+### ข้อมูล Projects
+- **ไฟล์:** `src/app/page.tsx`
+- **บรรทัด:** 20-44
 - Projects: E-Commerce, Error, Restaurant App
 
-### Contact Info
-- **File:** `src/app/page.tsx`
-- **Lines:** 47-79
+### ข้อมูลติดต่อ
+- **ไฟล์:** `src/app/page.tsx`
+- **บรรทัด:** 47-79
 - Email, GitHub, LinkedIn
 
-### Navigation Menu
-- **File:** `src/components/Header.tsx`
-- **Lines:** 9-15
+### เมนู Navigation
+- **ไฟล์:** `src/components/Header.tsx`
+- **บรรทัด:** 9-15
 - Home, About, Skills, Projects, Contact
 
 ---
 
-## Getting Started
+## วิธีเริ่มต้นใช้งาน
 
 ```bash
-# Install dependencies
+# ติดตั้ง dependencies
 npm install
 
-# Run development server
+# รัน development server
 npm run dev
 
-# Build for production
+# Build สำหรับ production
 npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+เปิด [http://localhost:3000](http://localhost:3000) ใน browser
 
 ---
 
-## Color Theme
+## สี Theme
 
-Light blue theme using Tailwind CSS colors:
-- Primary: `sky-400` (#38bdf8)
-- Secondary: `cyan-400` (#22d3ee)
-- Accent: `sky-500` (#0ea5e9)
+ใช้สีฟ้าอ่อนจาก Tailwind CSS:
+- หลัก: `sky-400` (#38bdf8)
+- รอง: `cyan-400` (#22d3ee)
+- เน้น: `sky-500` (#0ea5e9)
 
 ---
 
-## Deploy
+## การ Deploy
 
-Deployed on [Vercel](https://vercel.com) with automatic GitHub integration.
+Deploy บน [Vercel](https://vercel.com) พร้อมเชื่อมต่อ GitHub อัตโนมัติ
