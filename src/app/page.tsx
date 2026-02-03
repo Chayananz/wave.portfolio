@@ -27,12 +27,12 @@ const projects = [
     liveUrl: "https://e-commerce-store-six-ashen.vercel.app",
   },
   {
-    title: "Task Management App",
-    description: "A collaborative task management application with real-time updates, team features, and analytics.",
+    title: "Error",
+    description: "",
     image: "/projects/project2.jpg",
-    techStack: ["React", "Node.js", "Socket.io", "MongoDB"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
+    techStack: [],
+    githubUrl: "#",
+    liveUrl: "#",
   },
   {
     title: "Restaurant App",
