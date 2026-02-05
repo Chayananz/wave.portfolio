@@ -136,10 +136,11 @@ export default function Home() {
       <div className="nebula nebula-3"></div>
 
       <div className="cosmic-header">
-        <h1>COSMIC PORTFOLIO</h1>
+        <h1>Chayanan Pathumarak</h1>
+        <p className="cosmic-subtitle">Portfolio</p>
         <p>
-          Explore my universe of projects. Each planet represents a unique
-          creation waiting to be discovered.
+          CS Student | Web Developer | AI Enthusiast — Focusing on building
+          efficient, automated, and user-centric applications
         </p>
       </div>
 
