@@ -658,6 +658,120 @@ body {
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 
+/* Cosmic Modal */
+.cosmic-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: cosmic-fadeIn 0.3s ease-out;
+}
+
+.cosmic-modal {
+  background: linear-gradient(135deg, rgba(15, 15, 40, 0.95), rgba(30, 10, 60, 0.95));
+  border: 1px solid rgba(150, 100, 255, 0.3);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 700px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 0 60px rgba(150, 100, 255, 0.3), 0 0 120px rgba(150, 100, 255, 0.1);
+  animation: cosmic-modalIn 0.4s ease-out;
+}
+
+@keyframes cosmic-modalIn {
+  from { opacity: 0; transform: scale(0.8) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.cosmic-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.cosmic-modal-close:hover {
+  color: white;
+  transform: scale(1.2);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.cosmic-modal-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 30px;
+  text-align: center;
+  background: linear-gradient(to right, #d9b7ff, #9775fa, #00b7ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 2px;
+}
+
+.cosmic-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.cosmic-skill-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(150, 100, 255, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.cosmic-skill-card:hover {
+  background: rgba(150, 100, 255, 0.1);
+  border-color: rgba(150, 100, 255, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(150, 100, 255, 0.2);
+}
+
+.cosmic-skill-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #d9b7ff;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.cosmic-skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cosmic-skill-tag {
+  padding: 4px 12px;
+  background: linear-gradient(135deg, rgba(150, 100, 255, 0.2), rgba(0, 183, 255, 0.2));
+  border: 1px solid rgba(150, 100, 255, 0.3);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+
+.cosmic-skill-tag:hover {
+  background: linear-gradient(135deg, rgba(150, 100, 255, 0.4), rgba(0, 183, 255, 0.4));
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(150, 100, 255, 0.3);
+}
+
 @keyframes cosmic-fadeInDown {
   from { opacity: 0; transform: translateY(-30px); }
   to { opacity: 1; transform: translateY(0); }

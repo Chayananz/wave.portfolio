@@ -1,10 +1,27 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+// Skills data
+const skillCategories = [
+  {
+    title: "Languages",
+    skills: ["JavaScript", "TypeScript", "Python", "HTML/CSS", "SQL"],
+  },
+  {
+    title: "Frameworks",
+    skills: ["React", "Next.js", "Node.js", "Tailwind CSS"],
+  },
+  {
+    title: "Tools & Platforms",
+    skills: ["Git", "Docker", "Vercel", "MongoDB"],
+  },
+];
 
 export default function Home() {
+  const [activePanel, setActivePanel] = useState<string | null>(null);
+
   useEffect(() => {
-    // Create stars dynamically
     const starsContainer = document.getElementById("stars");
     if (!starsContainer) return;
     const starCount = 350;
@@ -29,7 +46,6 @@ export default function Home() {
       starsContainer.appendChild(star);
     }
 
-    // Add subtle parallax effect on mouse move
     const handleMouseMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth) * 100;
       const y = (e.clientY / window.innerHeight) * 100;
@@ -53,7 +69,6 @@ export default function Home() {
 
     document.addEventListener("mousemove", handleMouseMove);
 
-    // Add shooting stars occasionally
     let shootingStarTimeout: ReturnType<typeof setTimeout>;
     function createShootingStar() {
       const star = document.createElement("div");
@@ -128,58 +143,96 @@ export default function Home() {
         </p>
       </div>
 
+      {/* Planet 1 - E-Commerce */}
       <div className="planet planet-1">
         <div className="planet-content">
-          Stellar E-Commerce Platform
+          E-Commerce Platform
           <br />
-          <small>React &bull; Node.js &bull; MongoDB</small>
+          <small>Next.js &bull; TypeScript &bull; Stripe</small>
         </div>
       </div>
 
+      {/* Planet 2 - Restaurant App */}
       <div className="planet planet-2">
         <div className="planet-content">
-          Nebula Analytics Dashboard
+          Restaurant App
           <br />
-          <small>Vue.js &bull; D3.js &bull; Firebase</small>
+          <small>JavaScript &bull; CSS &bull; HTML</small>
         </div>
       </div>
 
-      <div className="planet planet-3">
+      {/* Planet 3 - Skills (center, purple) */}
+      <div
+        className="planet planet-3"
+        onClick={() => setActivePanel("skills")}
+      >
         <div className="planet-content">
-          Galaxy Social Network
+          Skills &amp; Languages
           <br />
-          <small>Angular &bull; GraphQL &bull; AWS</small>
+          <small>Click to explore</small>
         </div>
       </div>
 
+      {/* Planet 4 - About Me */}
       <div className="planet planet-4">
         <div className="planet-content">
-          Orbit Task Manager
+          About Me
           <br />
-          <small>Svelte &bull; TypeScript &bull; PostgreSQL</small>
+          <small>Developer &bull; Thailand</small>
         </div>
       </div>
 
+      {/* Planet 5 - Contact */}
       <div className="planet planet-5">
         <div className="planet-content">
-          Aurora Design System
+          Contact
           <br />
-          <small>Figma &bull; Storybook &bull; CSS-in-JS</small>
+          <small>Get in touch</small>
         </div>
       </div>
 
+      {/* Planet 6 - Resume */}
       <div className="planet planet-6">
         <div className="planet-content">
-          Comet Real-time Chat
+          Resume
           <br />
-          <small>React Native &bull; WebSockets &bull; Redis</small>
+          <small>Download CV</small>
         </div>
       </div>
+
+      {/* Skills Modal */}
+      {activePanel === "skills" && (
+        <div className="cosmic-modal-overlay" onClick={() => setActivePanel(null)}>
+          <div className="cosmic-modal" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="cosmic-modal-close"
+              onClick={() => setActivePanel(null)}
+            >
+              &times;
+            </button>
+            <h2 className="cosmic-modal-title">Skills &amp; Languages</h2>
+            <div className="cosmic-modal-grid">
+              {skillCategories.map((category) => (
+                <div key={category.title} className="cosmic-skill-card">
+                  <h3 className="cosmic-skill-title">{category.title}</h3>
+                  <div className="cosmic-skill-tags">
+                    {category.skills.map((skill) => (
+                      <span key={skill} className="cosmic-skill-tag">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="cosmic-footer">
         <p>
           Crafted with stardust and code by{" "}
-          <a href="#">Alex Cosmos</a> &bull; Journey through the digital
+          <a href="#">Chayanan Pathumarak</a> &bull; Journey through the digital
           universe
         </p>
       </div>
