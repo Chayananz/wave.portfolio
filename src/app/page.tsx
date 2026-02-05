@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import Image from "next/image";
 
 // Skills data
 const skillCategories = [
@@ -224,6 +225,15 @@ export default function Home() {
               &times;
             </button>
             <h2 className="cosmic-modal-title">E-Commerce Platform</h2>
+            <div className="cosmic-modal-preview">
+              <Image
+                src="/projects/project1.jpg"
+                alt="E-Commerce Platform Preview"
+                width={620}
+                height={350}
+                className="cosmic-preview-img"
+              />
+            </div>
             <p className="cosmic-modal-tech">
               Next.js &bull; TypeScript &bull; Stripe
             </p>
@@ -290,6 +300,15 @@ export default function Home() {
               &times;
             </button>
             <h2 className="cosmic-modal-title">Restaurant App</h2>
+            <div className="cosmic-modal-preview">
+              <Image
+                src="/projects/project3.jpg"
+                alt="Restaurant App Preview"
+                width={620}
+                height={350}
+                className="cosmic-preview-img"
+              />
+            </div>
             <p className="cosmic-modal-tech">
               JavaScript &bull; CSS &bull; HTML
             </p>

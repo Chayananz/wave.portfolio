@@ -376,10 +376,10 @@ body {
   }
 }
 
-/* ===== Cosmic Portfolio — Light Blue Galaxy ===== */
+/* ===== Cosmic Portfolio — Dark Galaxy ===== */
 .cosmic-body {
-  background: linear-gradient(135deg, #e8f4fd 0%, #d4ecfc 20%, #c5e4fa 40%, #dbeefe 60%, #eef6ff 80%, #f5faff 100%);
-  color: #1e3a5f;
+  background: radial-gradient(ellipse at center, #0a0a1a 0%, #0d0d2b 70%, #000 100%);
+  color: white;
   overflow: hidden;
   height: 100vh;
   width: 100vw;
@@ -398,57 +398,58 @@ body {
 
 .star {
   position: absolute;
-  background-color: rgba(56, 189, 248, 0.5);
+  background-color: white;
   border-radius: 50%;
   animation: twinkle var(--duration, 4s) infinite ease-in-out var(--delay, 0s);
 }
 
 .shooting-star {
   position: fixed;
-  width: 3px;
-  height: 3px;
-  background: linear-gradient(45deg, #38bdf8, #7dd3fc);
-  border-radius: 50%;
-  box-shadow: 0 0 8px 2px rgba(56, 189, 248, 0.6);
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 0;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
   z-index: 5;
+  transform: rotate(-45deg);
 }
 
 @keyframes twinkle {
-  0%, 100% { opacity: 0.15; transform: scale(0.8); }
-  50% { opacity: 0.6; transform: scale(1.2); }
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
 
 .nebula {
   position: fixed;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.2;
+  filter: blur(60px);
+  opacity: 0.3;
   z-index: 1;
 }
 
 .nebula-1 {
-  width: 70vw;
-  height: 70vw;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 70%);
+  width: 80vw;
+  height: 80vw;
+  background: radial-gradient(circle, #4a00ff 0%, transparent 70%);
   top: -20vw;
   left: -10vw;
 }
 
 .nebula-2 {
-  width: 50vw;
-  height: 50vw;
-  background: radial-gradient(circle, rgba(147, 197, 253, 0.3) 0%, transparent 70%);
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, #ff00ff 0%, transparent 70%);
   bottom: -10vw;
   right: -5vw;
 }
 
 .nebula-3 {
-  width: 60vw;
-  height: 60vw;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.2) 0%, transparent 70%);
+  width: 70vw;
+  height: 70vw;
+  background: radial-gradient(circle, #00b7ff 0%, transparent 70%);
   top: 30vh;
   left: 20vw;
-  opacity: 0.15;
+  opacity: 0.25;
 }
 
 /* Planets */
@@ -463,19 +464,19 @@ body {
   text-align: center;
   padding: 15px;
   cursor: pointer;
-  box-shadow: 0 8px 32px rgba(30, 58, 95, 0.15), 0 0 20px rgba(56, 189, 248, 0.1);
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.2);
   z-index: 10;
   transition: all 0.4s ease;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   transform-origin: center;
 }
 
 .planet:hover {
   transform: scale(1.12);
   z-index: 20;
-  box-shadow: 0 12px 40px rgba(30, 58, 95, 0.25), 0 0 30px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.4);
 }
 
 .planet::before {
@@ -483,7 +484,7 @@ body {
   position: absolute;
   width: 120%;
   height: 120%;
-  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
   border-radius: 50%;
   top: -10%;
   left: -10%;
@@ -494,7 +495,7 @@ body {
   position: relative;
   z-index: 2;
   font-size: 1rem;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   padding: 8px;
   max-width: 90%;
 }
@@ -502,7 +503,7 @@ body {
 .planet-1 {
   width: 140px;
   height: 140px;
-  background: linear-gradient(135deg, #fca5a5 0%, #f87171 40%, #ef4444 100%);
+  background: radial-gradient(circle at 30% 30%, #ff9e9e 0%, #ff6b6b 40%, #cc3a3a 100%);
   top: 25%;
   left: 15%;
   animation: orbit1 65s linear infinite;
@@ -511,7 +512,7 @@ body {
 .planet-2 {
   width: 110px;
   height: 110px;
-  background: linear-gradient(135deg, #93c5fd 0%, #60a5fa 40%, #3b82f6 100%);
+  background: radial-gradient(circle at 70% 30%, #a5d8ff 0%, #4dabf7 40%, #1864ab 100%);
   top: 65%;
   left: 75%;
   animation: orbit2 55s linear infinite 2s;
@@ -520,7 +521,7 @@ body {
 .planet-3 {
   width: 160px;
   height: 160px;
-  background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 40%, #8b5cf6 100%);
+  background: radial-gradient(circle at 30% 70%, #d9b7ff 0%, #9775fa 40%, #5f3dc4 100%);
   top: 45%;
   left: 45%;
   animation: orbit3 75s linear infinite 4s;
@@ -529,7 +530,7 @@ body {
 .planet-4 {
   width: 95px;
   height: 95px;
-  background: linear-gradient(135deg, #86efac 0%, #4ade80 40%, #22c55e 100%);
+  background: radial-gradient(circle at 70% 70%, #a3e6aa 0%, #51cf66 40%, #2b8a3e 100%);
   top: 15%;
   left: 65%;
   animation: orbit4 48s linear infinite 1s;
@@ -538,7 +539,7 @@ body {
 .planet-5 {
   width: 125px;
   height: 125px;
-  background: linear-gradient(135deg, #fdba74 0%, #fb923c 40%, #f97316 100%);
+  background: radial-gradient(circle at 30% 30%, #ffcc99 0%, #ff922b 40%, #d97706 100%);
   top: 75%;
   left: 25%;
   animation: orbit5 60s linear infinite 3s;
@@ -547,7 +548,7 @@ body {
 .planet-6 {
   width: 100px;
   height: 100px;
-  background: linear-gradient(135deg, #fda4af 0%, #fb7185 40%, #f43f5e 100%);
+  background: radial-gradient(circle at 70% 30%, #ffc3d8 0%, #ff6b9d 40%, #c2185b 100%);
   top: 35%;
   left: 85%;
   animation: orbit6 52s linear infinite 5s;
@@ -610,7 +611,7 @@ body {
   font-size: 4.5rem;
   letter-spacing: 6px;
   margin-bottom: 5px;
-  background: linear-gradient(135deg, #1e3a5f, #0369a1, #0ea5e9);
+  background: linear-gradient(to right, #fff9d7, white, #00b7ff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -624,9 +625,9 @@ body {
   bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 180px;
-  height: 3px;
-  background: linear-gradient(to right, transparent, #38bdf8, #22d3ee, #38bdf8, transparent);
+  width: 200px;
+  height: 4px;
+  background: linear-gradient(to right, transparent, #4a00ff, #ff00ff, #00b7ff, transparent);
   border-radius: 2px;
 }
 
@@ -634,7 +635,7 @@ body {
   font-size: 2.2rem;
   margin-top: 12px;
   letter-spacing: 8px;
-  color: rgba(30, 58, 95, 0.5);
+  color: rgba(255, 255, 255, 0.5);
   font-weight: 300;
   text-transform: uppercase;
 }
@@ -642,10 +643,11 @@ body {
 .cosmic-header p {
   font-size: 1.2rem;
   margin-top: 12px;
-  color: rgba(30, 58, 95, 0.7);
+  color: rgba(255, 255, 255, 0.85);
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 /* Cosmic Footer */
@@ -655,7 +657,7 @@ body {
   width: 100%;
   text-align: center;
   z-index: 30;
-  color: rgba(30, 58, 95, 0.5);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 1rem;
   letter-spacing: 1px;
   animation: cosmic-fadeIn 3s ease-out 1s forwards;
@@ -663,22 +665,23 @@ body {
 }
 
 .cosmic-footer a {
-  color: #0ea5e9;
+  color: #00b7ff;
   text-decoration: none;
   font-weight: bold;
   transition: all 0.3s ease;
 }
 
 .cosmic-footer a:hover {
-  color: #0369a1;
+  color: white;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 
 /* Cosmic Modal */
 .cosmic-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
   z-index: 50;
   display: flex;
   align-items: center;
@@ -687,8 +690,8 @@ body {
 }
 
 .cosmic-modal {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 249, 255, 0.95));
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: linear-gradient(135deg, rgba(15, 15, 40, 0.95), rgba(30, 10, 60, 0.95));
+  border: 1px solid rgba(150, 100, 255, 0.3);
   border-radius: 24px;
   padding: 40px;
   max-width: 700px;
@@ -696,13 +699,13 @@ body {
   max-height: 80vh;
   overflow-y: auto;
   position: relative;
-  box-shadow: 0 25px 60px rgba(30, 58, 95, 0.15), 0 0 40px rgba(56, 189, 248, 0.08);
+  box-shadow: 0 0 60px rgba(150, 100, 255, 0.3), 0 0 120px rgba(150, 100, 255, 0.1);
   animation: cosmic-modalIn 0.4s ease-out;
-  color: #1e3a5f;
+  color: white;
 }
 
 @keyframes cosmic-modalIn {
-  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  from { opacity: 0; transform: scale(0.8) translateY(20px); }
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
@@ -712,7 +715,7 @@ body {
   right: 20px;
   background: none;
   border: none;
-  color: rgba(30, 58, 95, 0.4);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 2rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -720,8 +723,9 @@ body {
 }
 
 .cosmic-modal-close:hover {
-  color: #1e3a5f;
+  color: white;
   transform: scale(1.2);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 
 .cosmic-modal-title {
@@ -729,16 +733,32 @@ body {
   font-weight: 800;
   margin-bottom: 24px;
   text-align: center;
-  background: linear-gradient(135deg, #0369a1, #0ea5e9, #38bdf8);
+  background: linear-gradient(to right, #d9b7ff, #9775fa, #00b7ff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   letter-spacing: 2px;
 }
 
+/* Preview Image */
+.cosmic-modal-preview {
+  margin-bottom: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(150, 100, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.cosmic-preview-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
 .cosmic-modal-tech {
   text-align: center;
-  color: rgba(30, 58, 95, 0.6);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 1rem;
   margin-bottom: 16px;
   letter-spacing: 1px;
@@ -746,7 +766,7 @@ body {
 
 .cosmic-modal-desc {
   text-align: center;
-  color: rgba(30, 58, 95, 0.8);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1.05rem;
   line-height: 1.7;
   margin-bottom: 24px;
@@ -772,26 +792,26 @@ body {
   font-size: 0.95rem;
   text-decoration: none;
   transition: all 0.3s ease;
-  background: rgba(30, 58, 95, 0.08);
-  color: #1e3a5f;
-  border: 1px solid rgba(30, 58, 95, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .cosmic-btn:hover {
-  background: rgba(30, 58, 95, 0.12);
+  background: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(30, 58, 95, 0.1);
+  box-shadow: 0 8px 20px rgba(150, 100, 255, 0.2);
 }
 
 .cosmic-btn-live {
-  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  background: linear-gradient(135deg, #7c3aed, #9775fa);
   color: white;
   border: none;
 }
 
 .cosmic-btn-live:hover {
-  background: linear-gradient(135deg, #0369a1, #0ea5e9);
-  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+  background: linear-gradient(135deg, #6d28d9, #7c3aed);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
 }
 
 /* Skills Cards */
@@ -802,24 +822,24 @@ body {
 }
 
 .cosmic-skill-card {
-  background: rgba(56, 189, 248, 0.05);
-  border: 1px solid rgba(56, 189, 248, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(150, 100, 255, 0.2);
   border-radius: 16px;
   padding: 20px;
   transition: all 0.3s ease;
 }
 
 .cosmic-skill-card:hover {
-  background: rgba(56, 189, 248, 0.1);
-  border-color: rgba(56, 189, 248, 0.3);
+  background: rgba(150, 100, 255, 0.1);
+  border-color: rgba(150, 100, 255, 0.4);
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.1);
+  box-shadow: 0 10px 30px rgba(150, 100, 255, 0.2);
 }
 
 .cosmic-skill-title {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #0369a1;
+  color: #d9b7ff;
   margin-bottom: 12px;
   letter-spacing: 1px;
 }
@@ -832,18 +852,18 @@ body {
 
 .cosmic-skill-tag {
   padding: 5px 14px;
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(34, 211, 238, 0.1));
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: linear-gradient(135deg, rgba(150, 100, 255, 0.2), rgba(0, 183, 255, 0.2));
+  border: 1px solid rgba(150, 100, 255, 0.3);
   border-radius: 20px;
   font-size: 0.85rem;
-  color: #1e3a5f;
+  color: rgba(255, 255, 255, 0.9);
   transition: all 0.3s ease;
 }
 
 .cosmic-skill-tag:hover {
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(34, 211, 238, 0.2));
+  background: linear-gradient(135deg, rgba(150, 100, 255, 0.4), rgba(0, 183, 255, 0.4));
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
+  box-shadow: 0 0 15px rgba(150, 100, 255, 0.3);
 }
 
 /* About Me */
@@ -855,7 +875,7 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  background: linear-gradient(135deg, #7c3aed, #9775fa);
   color: white;
   font-size: 1.8rem;
   font-weight: 800;
@@ -863,18 +883,18 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0 auto 16px;
-  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.2);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
 }
 
 .cosmic-about-name {
   font-size: 1.4rem;
   font-weight: 700;
-  color: #1e3a5f;
+  color: white;
   margin-bottom: 4px;
 }
 
 .cosmic-about-role {
-  color: rgba(30, 58, 95, 0.6);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 0.95rem;
   margin-bottom: 20px;
 }
@@ -885,7 +905,7 @@ body {
   gap: 32px;
   margin-top: 24px;
   padding-top: 24px;
-  border-top: 1px solid rgba(56, 189, 248, 0.15);
+  border-top: 1px solid rgba(150, 100, 255, 0.2);
 }
 
 .cosmic-stat {
@@ -896,12 +916,12 @@ body {
   display: block;
   font-size: 1.5rem;
   font-weight: 800;
-  color: #0ea5e9;
+  color: #d9b7ff;
 }
 
 .cosmic-stat-label {
   font-size: 0.8rem;
-  color: rgba(30, 58, 95, 0.5);
+  color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-top: 4px;
@@ -920,25 +940,25 @@ body {
   gap: 16px;
   padding: 16px 20px;
   border-radius: 16px;
-  background: rgba(56, 189, 248, 0.05);
-  border: 1px solid rgba(56, 189, 248, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(150, 100, 255, 0.15);
   text-decoration: none;
-  color: #1e3a5f;
+  color: white;
   transition: all 0.3s ease;
 }
 
 .cosmic-contact-item:hover {
-  background: rgba(56, 189, 248, 0.1);
-  border-color: rgba(56, 189, 248, 0.25);
+  background: rgba(150, 100, 255, 0.1);
+  border-color: rgba(150, 100, 255, 0.3);
   transform: translateX(6px);
-  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.1);
+  box-shadow: 0 6px 20px rgba(150, 100, 255, 0.15);
 }
 
 .cosmic-contact-icon {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  background: linear-gradient(135deg, #7c3aed, #9775fa);
   color: white;
   display: flex;
   align-items: center;
@@ -948,7 +968,7 @@ body {
 
 .cosmic-contact-label {
   font-size: 0.8rem;
-  color: rgba(30, 58, 95, 0.5);
+  color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin: 0;
