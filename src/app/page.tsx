@@ -1,22 +1,14 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
 
 // Skills data
-const skillCategories = [
-  {
-    title: "Languages",
-    skills: ["JavaScript", "TypeScript", "Python", "HTML/CSS", "SQL"],
-  },
-  {
-    title: "Frameworks",
-    skills: ["React", "Next.js", "Node.js", "Tailwind CSS"],
-  },
-  {
-    title: "Tools & Platforms",
-    skills: ["Git", "Docker", "Vercel", "MongoDB"],
-  },
+const skills = [
+  { name: "JavaScript / TypeScript", level: 90 },
+  { name: "React / Next.js", level: 85 },
+  { name: "Node.js / Tailwind CSS", level: 80 },
+  { name: "Python / SQL", level: 75 },
 ];
 
 // Projects data
@@ -24,524 +16,517 @@ const projects = [
   {
     id: "ecommerce",
     name: "E-Commerce Platform",
-    tech: "Next.js • TypeScript • Stripe",
     description:
-      "A full-stack e-commerce platform with product management, shopping cart, payment integration, and order tracking.",
+      "Full-stack online store with product management, shopping cart, payment integration via Stripe, and order tracking system.",
+    image: "/projects/project1.jpg",
+    tags: ["Next.js", "TypeScript", "Stripe"],
+    category: "web",
     github: "https://github.com/Chayananz/Project_E-Commerce",
     live: "https://e-commerce-store-six-ashen.vercel.app",
   },
   {
     id: "restaurant",
     name: "Restaurant App",
-    tech: "JavaScript • CSS • HTML",
     description:
-      "A restaurant web application featuring menu browsing, ordering system, and responsive design for all devices.",
+      "Restaurant web application featuring menu browsing, ordering system, and responsive design for all devices.",
+    image: "/projects/project3.jpg",
+    tags: ["JavaScript", "CSS", "HTML"],
+    category: "web",
     github: "https://github.com/Chayananz/restaurant-app",
     live: "https://restaurant-app-two-lovat.vercel.app",
   },
 ];
 
+const navLinks = [
+  { href: "#home", label: "Home" },
+  { href: "#about", label: "About" },
+  { href: "#portfolio", label: "Portfolio" },
+  { href: "#contact", label: "Contact" },
+];
+
 export default function Home() {
-  const [activePanel, setActivePanel] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeNav, setActiveNav] = useState("#home");
+  const [loading, setLoading] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const skillsRef = useRef<HTMLDivElement>(null);
+  const [skillsAnimated, setSkillsAnimated] = useState(false);
 
+  // Loading screen
   useEffect(() => {
-    const starsContainer = document.getElementById("stars");
-    if (!starsContainer) return;
-    const starCount = 120;
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
-    const fragment = document.createDocumentFragment();
-    for (let i = 0; i < starCount; i++) {
-      const star = document.createElement("div");
-      star.classList.add("star");
+  // Scroll effects
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 100);
 
-      const size = Math.random() * 3 + 1;
-      star.style.width = `${size}px`;
-      star.style.height = `${size}px`;
-      star.style.top = `${Math.random() * 100}%`;
-      star.style.left = `${Math.random() * 100}%`;
-      star.style.setProperty("--duration", `${Math.random() * 4 + 3}s`);
-      star.style.setProperty("--delay", `${Math.random() * 5}s`);
+      // Update active nav based on scroll position
+      const sections = navLinks.map((l) => l.href.slice(1));
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && window.scrollY >= el.offsetTop - 120) {
+          setActiveNav(`#${sections[i]}`);
+          break;
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-      fragment.appendChild(star);
+  // Skill bar animation on scroll
+  useEffect(() => {
+    if (!skillsRef.current) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setSkillsAnimated(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    obs.observe(skillsRef.current);
+    return () => obs.disconnect();
+  }, []);
+
+  // Particle effect
+  useEffect(() => {
+    const canvas = document.getElementById(
+      "particles-canvas"
+    ) as HTMLCanvasElement;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles: {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+    }[] = [];
+    for (let i = 0; i < 60; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 1.5,
+        vy: (Math.random() - 0.5) * 1.5,
+        size: Math.random() * 2 + 1,
+      });
     }
-    starsContainer.appendChild(fragment);
 
-    let shootingStarTimeout: ReturnType<typeof setTimeout>;
-    function createShootingStar() {
-      const star = document.createElement("div");
-      star.classList.add("shooting-star");
+    let animId: number;
+    function animate() {
+      if (!ctx || !canvas) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const startX = Math.random() * 80 + 10;
-      const startY = Math.random() * 40;
-      star.style.left = `${startX}%`;
-      star.style.top = `${startY}%`;
+      particles.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
-      document.body.appendChild(star);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(108, 92, 231, 0.4)";
+        ctx.fill();
 
-      const duration = Math.random() * 800 + 600;
-      const endX =
-        startX + (Math.random() * 25 + 15) * (Math.random() > 0.5 ? 1 : -1);
-      const endY = startY + (Math.random() * 25 + 15);
+        // Draw connections
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = p.x - particles[j].x;
+          const dy = p.y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 150) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(108, 92, 231, ${0.15 * (1 - dist / 150)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      });
 
-      star.animate(
-        [
-          { left: `${startX}%`, top: `${startY}%`, opacity: 0 },
-          { opacity: 0.8, offset: 0.3 },
-          { left: `${endX}%`, top: `${endY}%`, opacity: 0 },
-        ],
-        { duration, easing: "cubic-bezier(0.2, 0, 0.8, 1)" }
-      );
-
-      setTimeout(() => star.remove(), duration);
-
-      shootingStarTimeout = setTimeout(
-        createShootingStar,
-        Math.random() * 8000 + 4000
-      );
+      animId = requestAnimationFrame(animate);
     }
+    animate();
 
-    const initialTimeout = setTimeout(createShootingStar, 3000);
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      clearTimeout(shootingStarTimeout);
-      clearTimeout(initialTimeout);
-      if (starsContainer) starsContainer.innerHTML = "";
+      cancelAnimationFrame(animId);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  const handlePlanetClick = useCallback(
-    (panel: string) => {
-      if (panel === "resume") {
-        window.open("/resume.pdf", "_blank");
-        return;
-      }
-      setActivePanel(panel);
-    },
-    []
-  );
+  const scrollTo = useCallback((href: string) => {
+    const el = document.getElementById(href.slice(1));
+    if (el) {
+      window.scrollTo({ top: el.offsetTop - 80, behavior: "smooth" });
+    }
+    setMenuOpen(false);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="cyber-loading">
+        <div className="cyber-loader"></div>
+      </div>
+    );
+  }
 
   return (
-    <div className="cosmic-body">
-      <div className="stars" id="stars"></div>
+    <div className="cyber-body">
+      <canvas id="particles-canvas" className="particles-bg"></canvas>
 
-      <div className="nebula nebula-1"></div>
-      <div className="nebula nebula-2"></div>
-      <div className="nebula nebula-3"></div>
-
-      <div className="cosmic-header">
-        <h1>Chayanan Pathumarak</h1>
-        <p className="cosmic-subtitle">Portfolio</p>
-        <p>
-          CS Student | Web Developer | AI Enthusiast — Focusing on building
-          efficient, automated, and user-centric applications
-        </p>
-      </div>
-
-      {/* Planet 1 - E-Commerce */}
-      <div
-        className="planet planet-1"
-        onClick={() => handlePlanetClick("ecommerce")}
-      >
-        <div className="planet-content">
-          E-Commerce
-          <br />
-          <small>Click to explore</small>
+      {/* Header */}
+      <header className={`cyber-header ${scrolled ? "scrolled" : ""}`}>
+        <div className="cyber-logo">
+          DEV<span>PORTFOLIO</span>
         </div>
-      </div>
-
-      {/* Planet 2 - Restaurant App */}
-      <div
-        className="planet planet-2"
-        onClick={() => handlePlanetClick("restaurant")}
-      >
-        <div className="planet-content">
-          Restaurant
-          <br />
-          <small>Click to explore</small>
+        <nav className="cyber-nav-desktop">
+          <ul>
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className={activeNav === link.href ? "active" : ""}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollTo(link.href);
+                    setActiveNav(link.href);
+                  }}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="cyber-nav-buttons">
+          <a href="/resume.pdf" target="_blank" className="cyber-btn cyber-btn-outline">
+            <i className="fas fa-download"></i> Download CV
+          </a>
         </div>
-      </div>
-
-      {/* Planet 3 - Skills (center, purple) */}
-      <div
-        className="planet planet-3"
-        onClick={() => handlePlanetClick("skills")}
-      >
-        <div className="planet-content">
-          Skills
-          <br />
-          <small>Click to explore</small>
-        </div>
-      </div>
-
-      {/* Planet 4 - About Me */}
-      <div
-        className="planet planet-4"
-        onClick={() => handlePlanetClick("about")}
-      >
-        <div className="planet-content">
-          About Me
-          <br />
-          <small>Click to explore</small>
-        </div>
-      </div>
-
-      {/* Planet 5 - Contact */}
-      <div
-        className="planet planet-5"
-        onClick={() => handlePlanetClick("contact")}
-      >
-        <div className="planet-content">
-          Contact
-          <br />
-          <small>Click to explore</small>
-        </div>
-      </div>
-
-      {/* Planet 6 - Resume */}
-      <div
-        className="planet planet-6"
-        onClick={() => handlePlanetClick("resume")}
-      >
-        <div className="planet-content">
-          Resume
-          <br />
-          <small>Download CV</small>
-        </div>
-      </div>
-
-      {/* ===== MODALS ===== */}
-
-      {/* E-Commerce Modal */}
-      {activePanel === "ecommerce" && (
-        <div
-          className="cosmic-modal-overlay"
-          onClick={() => setActivePanel(null)}
+        <button
+          className="cyber-mobile-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
         >
-          <div className="cosmic-modal" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="cosmic-modal-close"
-              onClick={() => setActivePanel(null)}
+          <i className={`fas ${menuOpen ? "fa-times" : "fa-bars"}`}></i>
+        </button>
+        {menuOpen && (
+          <div className="cyber-mobile-menu">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo(link.href);
+                  setActiveNav(link.href);
+                }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </header>
+
+      {/* Hero */}
+      <section className="cyber-hero" id="home">
+        <div className="cyber-hero-content">
+          <h1>
+            Hi, I&apos;m <span>Chayanan Pathumarak</span>
+            <br />
+            Web Developer
+          </h1>
+          <p>
+            CS Student | Web Developer | AI Enthusiast — Focusing on building
+            efficient, automated, and user-centric applications
+          </p>
+          <div className="cyber-hero-buttons">
+            <a
+              href="#portfolio"
+              className="cyber-btn cyber-btn-primary"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#portfolio");
+              }}
             >
-              &times;
-            </button>
-            <h2 className="cosmic-modal-title">E-Commerce Platform</h2>
-            <div className="cosmic-modal-preview">
-              <Image
-                src="/projects/project1.jpg"
-                alt="E-Commerce Platform Preview"
-                width={620}
-                height={350}
-                className="cosmic-preview-img"
-              />
-            </div>
-            <p className="cosmic-modal-tech">
-              Next.js &bull; TypeScript &bull; Stripe
-            </p>
-            <p className="cosmic-modal-desc">{projects[0].description}</p>
-            <div className="cosmic-modal-links">
-              <a
-                href={projects[0].github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cosmic-btn"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                GitHub
-              </a>
-              <a
-                href={projects[0].live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cosmic-btn cosmic-btn-live"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-                Live Demo
-              </a>
-            </div>
+              <i className="fas fa-briefcase"></i> View My Work
+            </a>
+            <a
+              href="#contact"
+              className="cyber-btn cyber-btn-outline"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#contact");
+              }}
+            >
+              <i className="fas fa-envelope"></i> Get In Touch
+            </a>
+          </div>
+          <div className="cyber-social-links">
+            <a
+              href="https://github.com/Chayananz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-github"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/chayanan-pathumrak-6865b33a9/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+            <a href="mailto:chayananpath.work@gmail.com">
+              <i className="fas fa-envelope"></i>
+            </a>
           </div>
         </div>
-      )}
+      </section>
 
-      {/* Restaurant Modal */}
-      {activePanel === "restaurant" && (
-        <div
-          className="cosmic-modal-overlay"
-          onClick={() => setActivePanel(null)}
-        >
-          <div className="cosmic-modal" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="cosmic-modal-close"
-              onClick={() => setActivePanel(null)}
-            >
-              &times;
-            </button>
-            <h2 className="cosmic-modal-title">Restaurant App</h2>
-            <div className="cosmic-modal-preview">
-              <Image
-                src="/projects/project3.jpg"
-                alt="Restaurant App Preview"
-                width={620}
-                height={350}
-                className="cosmic-preview-img"
-              />
-            </div>
-            <p className="cosmic-modal-tech">
-              JavaScript &bull; CSS &bull; HTML
-            </p>
-            <p className="cosmic-modal-desc">{projects[1].description}</p>
-            <div className="cosmic-modal-links">
-              <a
-                href={projects[1].github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cosmic-btn"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                GitHub
-              </a>
-              <a
-                href={projects[1].live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cosmic-btn cosmic-btn-live"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-                Live Demo
-              </a>
-            </div>
-          </div>
+      {/* About */}
+      <section id="about">
+        <div className="cyber-section-title">
+          <h2>About Me</h2>
+          <p>Get to know more about my journey and expertise</p>
         </div>
-      )}
+        <div className="cyber-about-content">
+          <div className="cyber-about-text">
+            <h3>CS Student &amp; Problem Solver</h3>
+            <p>
+              I&apos;m a Computer Science student from Thailand passionate about
+              web development and artificial intelligence. I focus on building
+              efficient, automated, and user-centric applications that solve
+              real-world problems.
+            </p>
+            <p>
+              My journey in tech started with curiosity about how websites work.
+              Since then, I&apos;ve built full-stack applications, explored AI
+              technologies, and continuously push myself to learn new
+              frameworks and tools.
+            </p>
 
-      {/* Skills Modal */}
-      {activePanel === "skills" && (
-        <div
-          className="cosmic-modal-overlay"
-          onClick={() => setActivePanel(null)}
-        >
-          <div className="cosmic-modal" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="cosmic-modal-close"
-              onClick={() => setActivePanel(null)}
-            >
-              &times;
-            </button>
-            <h2 className="cosmic-modal-title">Skills &amp; Languages</h2>
-            <div className="cosmic-modal-grid">
-              {skillCategories.map((category) => (
-                <div key={category.title} className="cosmic-skill-card">
-                  <h3 className="cosmic-skill-title">{category.title}</h3>
-                  <div className="cosmic-skill-tags">
-                    {category.skills.map((skill) => (
-                      <span key={skill} className="cosmic-skill-tag">
-                        {skill}
-                      </span>
-                    ))}
+            <div className="cyber-skills" ref={skillsRef}>
+              {skills.map((skill) => (
+                <div key={skill.name} className="cyber-skill-item">
+                  <h4>{skill.name}</h4>
+                  <div className="cyber-skill-bar">
+                    <div
+                      className="cyber-skill-progress"
+                      style={{
+                        width: skillsAnimated ? `${skill.level}%` : "0%",
+                      }}
+                    ></div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
+          <div className="cyber-about-image">
+            <Image
+              src="/profile.jpg"
+              alt="Chayanan Pathumarak"
+              width={500}
+              height={500}
+              className="cyber-profile-img"
+            />
+          </div>
         </div>
-      )}
+      </section>
 
-      {/* About Me Modal */}
-      {activePanel === "about" && (
-        <div
-          className="cosmic-modal-overlay"
-          onClick={() => setActivePanel(null)}
-        >
-          <div className="cosmic-modal" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="cosmic-modal-close"
-              onClick={() => setActivePanel(null)}
+      {/* Portfolio */}
+      <section id="portfolio" className="cyber-portfolio-section">
+        <div className="cyber-section-title">
+          <h2>My Portfolio</h2>
+          <p>Check out some of my recent projects</p>
+        </div>
+        <div className="cyber-portfolio-grid">
+          {projects.map((project) => (
+            <div key={project.id} className="cyber-portfolio-item">
+              <div className="cyber-portfolio-img">
+                <Image
+                  src={project.image}
+                  alt={project.name}
+                  width={600}
+                  height={350}
+                  className="cyber-project-image"
+                />
+              </div>
+              <div className="cyber-portfolio-content">
+                <h3>{project.name}</h3>
+                <p>{project.description}</p>
+                <div className="cyber-portfolio-tags">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="cyber-tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="cyber-portfolio-links">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cyber-btn cyber-btn-outline cyber-btn-sm"
+                  >
+                    <i className="fab fa-github"></i> GitHub
+                  </a>
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cyber-btn cyber-btn-primary cyber-btn-sm"
+                  >
+                    <i className="fas fa-external-link-alt"></i> Live Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact">
+        <div className="cyber-section-title">
+          <h2>Get In Touch</h2>
+          <p>Have a project in mind? Let&apos;s work together!</p>
+        </div>
+        <div className="cyber-contact-container">
+          <div className="cyber-contact-info">
+            <a
+              href="mailto:chayananpath.work@gmail.com"
+              className="cyber-contact-card"
             >
-              &times;
-            </button>
-            <h2 className="cosmic-modal-title">About Me</h2>
-            <div className="cosmic-about-content">
-              <div className="cosmic-about-avatar">CP</div>
-              <h3 className="cosmic-about-name">Chayanan Pathumarak</h3>
-              <p className="cosmic-about-role">
-                CS Student &bull; Web Developer &bull; AI Enthusiast
-              </p>
-              <p className="cosmic-modal-desc">
-                I&apos;m a Computer Science student from Thailand passionate
-                about web development and artificial intelligence. I focus on
-                building efficient, automated, and user-centric applications
-                that solve real-world problems.
-              </p>
-              <div className="cosmic-about-stats">
-                <div className="cosmic-stat">
-                  <span className="cosmic-stat-number">2+</span>
-                  <span className="cosmic-stat-label">Projects</span>
-                </div>
-                <div className="cosmic-stat">
-                  <span className="cosmic-stat-number">5+</span>
-                  <span className="cosmic-stat-label">Technologies</span>
-                </div>
-                <div className="cosmic-stat">
-                  <span className="cosmic-stat-number">TH</span>
-                  <span className="cosmic-stat-label">Thailand</span>
-                </div>
+              <div className="cyber-contact-icon">
+                <i className="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h3>Email</h3>
+                <p>chayananpath.work@gmail.com</p>
+              </div>
+            </a>
+            <a
+              href="https://github.com/Chayananz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cyber-contact-card"
+            >
+              <div className="cyber-contact-icon">
+                <i className="fab fa-github"></i>
+              </div>
+              <div>
+                <h3>GitHub</h3>
+                <p>github.com/Chayananz</p>
+              </div>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/chayanan-pathumrak-6865b33a9/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cyber-contact-card"
+            >
+              <div className="cyber-contact-icon">
+                <i className="fab fa-linkedin-in"></i>
+              </div>
+              <div>
+                <h3>LinkedIn</h3>
+                <p>Chayanan Pathumarak</p>
+              </div>
+            </a>
+            <div className="cyber-contact-card">
+              <div className="cyber-contact-icon">
+                <i className="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h3>Location</h3>
+                <p>Thailand</p>
               </div>
             </div>
           </div>
         </div>
-      )}
+      </section>
 
-      {/* Contact Modal */}
-      {activePanel === "contact" && (
-        <div
-          className="cosmic-modal-overlay"
-          onClick={() => setActivePanel(null)}
-        >
-          <div className="cosmic-modal" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="cosmic-modal-close"
-              onClick={() => setActivePanel(null)}
-            >
-              &times;
-            </button>
-            <h2 className="cosmic-modal-title">Get in Touch</h2>
-            <div className="cosmic-contact-list">
-              <a
-                href="mailto:chayananpath.work@gmail.com"
-                className="cosmic-contact-item"
-              >
-                <div className="cosmic-contact-icon">
-                  <svg
-                    width="24"
-                    height="24"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <p className="cosmic-contact-label">Email</p>
-                  <p className="cosmic-contact-value">
-                    chayananpath.work@gmail.com
-                  </p>
-                </div>
-              </a>
-
+      {/* Footer */}
+      <footer className="cyber-footer">
+        <div className="cyber-footer-content">
+          <div className="cyber-footer-section">
+            <h3>DEVPORTFOLIO</h3>
+            <p>
+              Building efficient, automated, and user-centric applications.
+              Let&apos;s build something amazing together!
+            </p>
+            <div className="cyber-footer-socials">
               <a
                 href="https://github.com/Chayananz"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cosmic-contact-item"
               >
-                <div className="cosmic-contact-icon">
-                  <svg
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <p className="cosmic-contact-label">GitHub</p>
-                  <p className="cosmic-contact-value">github.com/Chayananz</p>
-                </div>
+                <i className="fab fa-github"></i>
               </a>
-
               <a
                 href="https://www.linkedin.com/in/chayanan-pathumrak-6865b33a9/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cosmic-contact-item"
               >
-                <div className="cosmic-contact-icon">
-                  <svg
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="cosmic-contact-label">LinkedIn</p>
-                  <p className="cosmic-contact-value">Chayanan Pathumarak</p>
-                </div>
+                <i className="fab fa-linkedin-in"></i>
+              </a>
+              <a href="mailto:chayananpath.work@gmail.com">
+                <i className="fas fa-envelope"></i>
               </a>
             </div>
           </div>
+          <div className="cyber-footer-section">
+            <h3>Quick Links</h3>
+            <div className="cyber-footer-links">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollTo(link.href);
+                  }}
+                >
+                  <i className="fas fa-chevron-right"></i> {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className="cyber-footer-section">
+            <h3>Tech Stack</h3>
+            <div className="cyber-footer-links">
+              <span>Next.js / React</span>
+              <span>TypeScript / JavaScript</span>
+              <span>Tailwind CSS / Node.js</span>
+              <span>Python / MongoDB</span>
+            </div>
+          </div>
         </div>
-      )}
-
-      <div className="cosmic-footer">
-        <p>
-          Crafted with stardust and code by{" "}
-          <a href="https://github.com/Chayananz" target="_blank" rel="noopener noreferrer">
-            Chayanan Pathumarak
-          </a>{" "}
-          &bull; Journey through the digital universe
-        </p>
-      </div>
+        <div className="cyber-copyright">
+          <p>
+            &copy; {new Date().getFullYear()} Chayanan Pathumarak. All rights
+            reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
