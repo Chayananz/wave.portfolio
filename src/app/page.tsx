@@ -153,7 +153,7 @@ export default function Home() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(108, 92, 231, 0.4)";
+        ctx.fillStyle = "rgba(59, 130, 246, 0.3)";
         ctx.fill();
 
         // Draw connections
@@ -165,7 +165,7 @@ export default function Home() {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(108, 92, 231, ${0.15 * (1 - dist / 150)})`;
+            ctx.strokeStyle = `rgba(59, 130, 246, ${0.12 * (1 - dist / 150)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
