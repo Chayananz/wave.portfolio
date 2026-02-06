@@ -93,6 +93,24 @@ export default function Home() {
     return () => obs.disconnect();
   }, []);
 
+  // Section slide-in on scroll
+  useEffect(() => {
+    const sections = document.querySelectorAll("[data-slide]");
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("slide-visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    sections.forEach((s) => obs.observe(s));
+    return () => obs.disconnect();
+  }, [loading]);
+
   // Particle effect
   useEffect(() => {
     const canvas = document.getElementById(
@@ -302,7 +320,7 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section id="about">
+      <section id="about" data-slide className="slide-from-left">
         <div className="cyber-section-title">
           <h2>About Me</h2>
           <p>Get to know more about my journey and expertise</p>
@@ -352,7 +370,7 @@ export default function Home() {
       </section>
 
       {/* Portfolio */}
-      <section id="portfolio" className="cyber-portfolio-section">
+      <section id="portfolio" className="cyber-portfolio-section slide-from-right" data-slide>
         <div className="cyber-section-title">
           <h2>My Portfolio</h2>
           <p>Check out some of my recent projects</p>
@@ -404,7 +422,7 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact">
+      <section id="contact" data-slide className="slide-from-left">
         <div className="cyber-section-title">
           <h2>Get In Touch</h2>
           <p>Have a project in mind? Let&apos;s work together!</p>
@@ -465,7 +483,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="cyber-footer">
+      <footer className="cyber-footer slide-from-bottom" data-slide>
         <div className="cyber-footer-content">
           <div className="cyber-footer-section">
             <h3>DEVPORTFOLIO</h3>
